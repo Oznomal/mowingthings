@@ -11,13 +11,15 @@ import java.net.URL;
  */
 public class Main
 {
-    private static final String SIMULATION_FILE_LOCATION = "/simulation.txt";
+    private static final String SIMULATION_FILE_PREFIX = "scenarios/scenario";
+    private static final String SIMULATION_FILE_SUFFIX = ".csv";
 
     public static void main(String [] args)
     {
-        int iterations = 0;
+        // TODO: SCENARIOS TO TARGET: 6(AGGRESSIVE), 8(MODERATE), 9 (MODERATE), 10 (MODERATE), 11 (MODERATE),
+        int fileNumber = 15;
 
-        final URL url = Main.class.getResource(SIMULATION_FILE_LOCATION);
+        final URL url = Main.class.getResource(SIMULATION_FILE_PREFIX + fileNumber + SIMULATION_FILE_SUFFIX);
 
         File simFile;
 
