@@ -16,7 +16,7 @@ public class Main
 
     public static void main(String [] args)
     {
-        // TODO: SCENARIOS TO TARGET: 6(AGGRESSIVE), 8(MODERATE), 9 (MODERATE), 10 (MODERATE), 11 (MODERATE),
+        // TODO: SCENARIOS TO TARGET: 6(HIGH), 8(MEDIUM), 9 (MEDIUM), 10 (MEDIUM), 11 (MEDIUM),
         int fileNumber = 15;
 
         final URL url = Main.class.getResource(SIMULATION_FILE_PREFIX + fileNumber + SIMULATION_FILE_SUFFIX);

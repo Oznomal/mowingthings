@@ -70,18 +70,18 @@ public class Simulation
         {
             System.out.println("Turn " + (++turnsTaken) + ":" + "\n");
 
-            boolean ismoveEligible = true;
+            boolean isMoveEligible = true;
 
             for(Mower mower : mowers)
             {
                 if(!mower.isDisabled())
                 {
-                    MowerMove move = mower.determineMove(ismoveEligible);
+                    MowerMove move = mower.determineMove(isMoveEligible);
 
 //                    if(move.getMowerMovementType() == MowerMovementType.MOVE
 //                            && simulationRiskProfile == SimulationRiskProfile.LOW)
 //                    {
-//                        ismoveEligible = false;
+//                        isMoveEligible = false;
 //                    }
 
                     displayMowerMove(move);
@@ -300,10 +300,10 @@ public class Simulation
          }
          else if(riskFactor >= 3)
          {
-             updateSimulationRiskProfile(SimulationRiskProfile.MODERATE);
+             updateSimulationRiskProfile(SimulationRiskProfile.MEDIUM);
          }
          else{
-             updateSimulationRiskProfile(SimulationRiskProfile.AGGRESSIVE);
+             updateSimulationRiskProfile(SimulationRiskProfile.HIGH);
          }
     }
 

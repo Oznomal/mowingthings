@@ -3,7 +3,6 @@ package mower;
 import constant.Direction;
 import constant.LawnSquareContent;
 import constant.MowerMovementType;
-import constant.SimulationRiskProfile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,15 +13,18 @@ import java.util.Random;
  *
  * Created by L. Arroyo on 9/28/2019
  */
-public class NextLowRiskMowerMoveServiceImpl extends NextMowerMoveService
+class NextLowRiskMoveServiceImpl extends NextMowerMoveService
 {
     // FIELDS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    private static NextLowRiskMowerMoveServiceImpl nextLowRiskMowerMoveService;
+    private static final int MAX_UNKNOWN_SQUARE_COUNT = 3;
+    private static final int MAX_TURNS_SINCE_LAST_SCAN = 2;
+
+    private static NextLowRiskMoveServiceImpl nextLowRiskMowerMoveService;
 
     // CONSTRUCTOR
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    private NextLowRiskMowerMoveServiceImpl(){}
+    private NextLowRiskMoveServiceImpl(){}
 
     // PUBLIC CLASS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -44,20 +46,18 @@ public class NextLowRiskMowerMoveServiceImpl extends NextMowerMoveService
         final Direction currDirection = mower.getDirection();
         final int currXCoor = mower.getXCoordinate();
         final int currYCoor = mower.getYCoordinate();
-        final int posInSS = mower.getPositionWithinSurroundingSquares();
 
-        // IF THE SURROUNDING SQUARES ARE EMPTY OR HAVE MORE NULLS THAN ALLOWED RE-SCAN
+        // IF THE SURROUNDING SQUARES ARE EMPTY, HAVE TOO MANY UNKNOWNS, OR MAX TURNS SINCE LAST SCAN WE WANT TO SCAN
         if(surroundingSquares.isEmpty()
-                || getSurroundingSquareNullCount(surroundingSquares) >= SimulationRiskProfile.LOW.getMaxNullCount())
+                || getSurroundingSquareUnknownCount(surroundingSquares) >= MAX_UNKNOWN_SQUARE_COUNT
+                || mower.getTurnsSinceLastScan() >= MAX_TURNS_SINCE_LAST_SCAN)
         {
             response = new MowerMove(name, MowerMovementType.SCAN, currDirection, currXCoor, currYCoor);
-
-            mower.setPositionWithinSurroundingSquares(-1);
         }
         // IF THE MOWER IS MOVE ELIGIBLE DETERMINE NEXT ACTION
         else if(isMoveEligible)
         {
-            final List<List<Integer>> possibleMovesList = getPossibleMovesByRanking(posInSS, surroundingSquares);
+            final List<List<Integer>> possibleMovesList = getPossibleMovesByRanking(surroundingSquares);
             final List<Integer> medRiskMoves   = possibleMovesList.get(2);
             final List<Integer> preferredMoves = possibleMovesList.get(3);
 
@@ -157,11 +157,11 @@ public class NextLowRiskMowerMoveServiceImpl extends NextMowerMoveService
      *
      * @return - The instance of this class
      */
-    static NextLowRiskMowerMoveServiceImpl getInstance()
+    static NextLowRiskMoveServiceImpl getInstance()
     {
         if(nextLowRiskMowerMoveService == null)
         {
-            nextLowRiskMowerMoveService = new NextLowRiskMowerMoveServiceImpl();
+            nextLowRiskMowerMoveService = new NextLowRiskMoveServiceImpl();
         }
 
         return nextLowRiskMowerMoveService;

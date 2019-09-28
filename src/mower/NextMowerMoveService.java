@@ -53,27 +53,23 @@ abstract class NextMowerMoveService
      * 3 - Pref Moves:     These are the safest moves a mower can make, this is the subset of remaining moves that are
      *                     not considered forbidden, high risk, or medium risk.
      *
-     * @param positionWithinSurroundingSquares - The index position within the surrounding squares the mower is at
      * @param surroundingSquares - The surrounding squares model for the mower
      *
      * @return - 4 lists of moves: forbidden, high risk, medium risk, and preferred (in that order)
      */
-    List<List<Integer>> getPossibleMovesByRanking(final int positionWithinSurroundingSquares,
-                                                            final List<LawnSquareContent> surroundingSquares)
+    List<List<Integer>> getPossibleMovesByRanking(final List<LawnSquareContent> surroundingSquares)
     {
         List<Integer> forbiddenMoves = new ArrayList<>();
         List<Integer> highRiskMoves  = new ArrayList<>();
         List<Integer> medRiskMoves   = new ArrayList<>();
         List<Integer> preferredMoves = new ArrayList<>();
 
-        Set<Integer> unknownMoves = determineUnknownIndexes(positionWithinSurroundingSquares);
-
         // 1. LOOP THROUGH THE LIST AND GET THE SQUARES THE SQUARE INDEXES WHICH ARE FORBIDDEN / HIGH RISK
         for(int i = 0; i < 8; i++)
         {
             LawnSquareContent content = surroundingSquares.get(i);
 
-            if(content == LawnSquareContent.MOWER)
+            if(content == LawnSquareContent.MOWER || content == LawnSquareContent.UNKNOWN)
             {
                 highRiskMoves.add(i);
             }
@@ -88,13 +84,16 @@ abstract class NextMowerMoveService
         {
             for(Integer idx : highRiskMoves)
             {
-                for(Integer riskyIndex : determineMedRiskMovesForHighRiskSquare(idx))
+                if(surroundingSquares.get(idx) == LawnSquareContent.MOWER)
                 {
-                    if(!forbiddenMoves.contains(riskyIndex)
-                            && !highRiskMoves.contains(riskyIndex)
-                            && !medRiskMoves.contains(riskyIndex))
+                    for(Integer riskyIndex : determineMedRiskMovesForHighRiskSquare(idx))
                     {
-                        medRiskMoves.add(riskyIndex);
+                        if(!forbiddenMoves.contains(riskyIndex)
+                                && !highRiskMoves.contains(riskyIndex)
+                                && !medRiskMoves.contains(riskyIndex))
+                        {
+                            medRiskMoves.add(riskyIndex);
+                        }
                     }
                 }
             }
@@ -120,7 +119,7 @@ abstract class NextMowerMoveService
      *
      * @return - The number of null squares in the surrounding square list
      */
-    int getSurroundingSquareNullCount(final List<LawnSquareContent> surroundingSquares)
+    int getSurroundingSquareUnknownCount(final List<LawnSquareContent> surroundingSquares)
     {
         if(surroundingSquares == null || surroundingSquares.isEmpty())
         {
@@ -131,7 +130,7 @@ abstract class NextMowerMoveService
 
         for(LawnSquareContent content : surroundingSquares)
         {
-            if(content == null)
+            if(content == LawnSquareContent.UNKNOWN)
             {
                 count++;
             }
@@ -154,8 +153,6 @@ abstract class NextMowerMoveService
 
         mower.getSurroundingSquares().set(mower.getDirection().getIndex(), null);
 
-        mower.setPositionWithinSurroundingSquares(mower.getDirection().getIndex());
-
         return new MowerMove(mower.getName(),
                 MowerMovementType.MOVE,
                 mower.getDirection(),
@@ -167,63 +164,6 @@ abstract class NextMowerMoveService
 
     // PRIVATE METHODS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /**
-     * Determines the indexes in the surrounding squares model that cannot be determined based on the mowers current
-     * position within the model
-     *
-     * @param positionWithinSurroundingSquares - The mowers position within the surrounding squares model
-     *
-     * @return - A set of indexes that the mower does not know the contents of based on its position
-     */
-    private Set<Integer> determineUnknownIndexes(final int positionWithinSurroundingSquares)
-    {
-        if(positionWithinSurroundingSquares == Integer.MIN_VALUE)
-        {
-            return new HashSet<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7)); // MOWER HAS NO KNOWLEDGE OF SQUARES AROUND IT
-        }
-        else if(positionWithinSurroundingSquares == -1)
-        {
-            return new HashSet<>(); // THIS MEANS THE MOWER IS IN THE DEAD CENTER OF THE SURROUNDING MODEL
-        }
-        else if(positionWithinSurroundingSquares == 0)
-        {
-            return new HashSet<>(Arrays.asList(0, 1, 7)); // MOWER IN NORTH SQUARE OF MODEL
-        }
-        else if(positionWithinSurroundingSquares == 1)
-        {
-            return new HashSet<>(Arrays.asList(0, 1, 2, 3, 7)); // MOWER IN NORTHEAST SQUARE OF MODEL
-        }
-        else if(positionWithinSurroundingSquares == 2)
-        {
-            return new HashSet<>(Arrays.asList(1, 2, 3)); // MOWER IN EAST SQUARE OF MODEL
-        }
-        else if(positionWithinSurroundingSquares == 3)
-        {
-            return new HashSet<>(Arrays.asList(1, 2, 3, 4, 5)); // MOWER IN SOUTHEAST SQUARE OF MODEL
-        }
-        else if(positionWithinSurroundingSquares == 4)
-        {
-            return new HashSet<>(Arrays.asList(3, 4, 5)); // MOWER IN SOUTH SQUARE OF MODEL
-        }
-        else if(positionWithinSurroundingSquares == 5)
-        {
-            return new HashSet<>(Arrays.asList(3, 4, 5, 6, 7)); // MOWER IN SOUTHWEST SQUARE OF MODEL
-        }
-        else if(positionWithinSurroundingSquares == 6)
-        {
-            return new HashSet<>(Arrays.asList(5, 6, 7)); // MOWER IN WEST SQUARE OF MODEL
-        }
-        else if(positionWithinSurroundingSquares == 7)
-        {
-            return new HashSet<>(Arrays.asList(0, 1, 5, 6, 7)); // MOWER IN NORTHWEST SQUARE OF MODEL
-        }
-        else{
-            // THIS SHOULD NOT BE REACHED EVER BECAUSE THE INDEX SHOULD ALWAYS BE BETWEEN 0-7
-            throw new RuntimeException("[UNEXPECTED INDEX ERROR] :: determineUnknownIndexes, positionWithinSquares="
-                    + positionWithinSurroundingSquares);
-        }
-    }
-
     /**
      * Determines med risk moves based on a surrounding square that contains a mower or movable obstacle
      *

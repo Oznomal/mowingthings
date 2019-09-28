@@ -12,5 +12,6 @@ public enum LawnSquareContent
     GRASS,
     CRATER,
     FENCE,
-    MOWER
+    MOWER,
+    UNKNOWN
 }
