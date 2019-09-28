@@ -15,6 +15,8 @@ public class Main
 
     public static void main(String [] args)
     {
+        int iterations = 0;
+
         final URL url = Main.class.getResource(SIMULATION_FILE_LOCATION);
 
         File simFile;
@@ -31,5 +33,34 @@ public class Main
         final Simulation simulation = new Simulation(simFile);
 
         simulation.start();
+
+//        try
+//        {
+//            while(true)
+//            {
+//                iterations++;
+//
+//                final URL url = Main.class.getResource(SIMULATION_FILE_LOCATION);
+//
+//                File simFile;
+//
+//                try
+//                {
+//                    simFile = new File(url.toURI());
+//                }
+//                catch(URISyntaxException e)
+//                {
+//                    throw new RuntimeException(e);
+//                }
+//
+//                final Simulation simulation = new Simulation(simFile);
+//
+//                simulation.start();
+//            }
+//        }
+//        catch(Exception e)
+//        {
+//            System.out.println("Successfully had a run, it took " + iterations + " attempts");
+//        }
     }
 }

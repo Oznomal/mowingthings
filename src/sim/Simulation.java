@@ -78,11 +78,11 @@ public class Simulation
                 {
                     MowerMove move = mower.determineMove(ismoveEligible);
 
-                    if(move.getMowerMovementType() == MowerMovementType.MOVE
-                            && simulationRiskProfile == SimulationRiskProfile.LOW)
-                    {
-                        ismoveEligible = false;
-                    }
+//                    if(move.getMowerMovementType() == MowerMovementType.MOVE
+//                            && simulationRiskProfile == SimulationRiskProfile.LOW)
+//                    {
+//                        ismoveEligible = false;
+//                    }
 
                     displayMowerMove(move);
 
@@ -453,6 +453,12 @@ public class Simulation
         sb.append("\nTurns: " + turnsTaken);
 
         System.out.println(sb.toString());
+
+        // USE THIS BLOCK WHEN LETTING THE SIMULATION RUN UNTIL SUCCESS
+//        if(totalGrassCut == startingGrassToCut)
+//        {
+//            throw new RuntimeException("Success");
+//        }
     }
 
     /**
