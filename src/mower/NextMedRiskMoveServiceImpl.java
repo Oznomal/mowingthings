@@ -9,11 +9,17 @@ class NextMedRiskMoveServiceImpl extends NextMowerMoveService
 {
     // FIELDS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private static final int MAX_UNKNOWN_SQUARE_COUNT = 5;
+    private static final int MAX_TURNS_SINCE_LAST_SCAN = 3;
+
     private static NextMedRiskMoveServiceImpl nextMedRiskMoveService;
 
     // CONSTRUCTOR
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    private NextMedRiskMoveServiceImpl(){}
+    private NextMedRiskMoveServiceImpl()
+    {
+        super(MAX_UNKNOWN_SQUARE_COUNT, MAX_TURNS_SINCE_LAST_SCAN);
+    }
 
     // PACKAGE METHODS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

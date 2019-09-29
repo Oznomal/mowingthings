@@ -16,6 +16,19 @@ import java.util.*;
  */
 abstract class NextMowerMoveService
 {
+    // FIELDS
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private final int maxUnknownCount;
+    private final int maxTurnsSinceLastScan;
+
+    // ABSTRACT CONSTRUCTOR
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public NextMowerMoveService(final int maxUnknownCount, final int maxTurnsSinceLastScan)
+    {
+        this.maxUnknownCount = maxUnknownCount;
+        this.maxTurnsSinceLastScan = maxTurnsSinceLastScan;
+    }
+
     // ABSTRACT METHODS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
@@ -28,7 +41,7 @@ abstract class NextMowerMoveService
      */
     abstract MowerMove getNextMowerMove(final boolean isMoveEligible, final Mower mower);
 
-    // PROTECTED METHODS
+    // DEFAULT PACKAGE ONLY METHODS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * Ranks the possible moves based off of moves which are forbidden, high risk, medium risk, and preferred
