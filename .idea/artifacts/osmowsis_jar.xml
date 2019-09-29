@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="osmowsis:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/osmowsis_jar</output-path>
+    <root id="archive" name="OsMowSis.jar">
+      <element id="module-output" name="OsMowSis" />
+    </root>
+  </artifact>
+</component>

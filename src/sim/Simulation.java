@@ -454,6 +454,11 @@ public class Simulation
                 newSquare.setLawnSquareContent(LawnSquareContent.EMPTY);
             }
         }
+        if(move.getMowerMovementType() == MowerMovementType.STEER
+                || move.getMowerMovementType() == MowerMovementType.PASS)
+        {
+            System.out.println("ok");
+        }
     }
 
     /**

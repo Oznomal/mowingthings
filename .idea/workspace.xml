@@ -1,43 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="osmowsis:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="219a6a87-85cd-4e5f-a1c8-8cff4f147e33" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/osmowsis_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OsMowSis/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/scenarios/scenario0.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/scenarios/scenario1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/scenarios/scenario10.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/scenarios/scenario11.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/scenarios/scenario12.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/scenarios/scenario13.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/scenarios/scenario14.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/scenarios/scenario15.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/scenarios/scenario2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/scenarios/scenario3.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/scenarios/scenario4.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/scenarios/scenario5.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/scenarios/scenario6.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/scenarios/scenario7.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/scenarios/scenario8.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/scenarios/scenario9.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/sim/Simulation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OsMowSis/sim/Simulation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenarios/scenario0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/scenarios/scenario0.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenarios/scenario1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/scenarios/scenario1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenarios/scenario10.csv" beforeDir="false" afterPath="$PROJECT_DIR$/scenarios/scenario10.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenarios/scenario11.csv" beforeDir="false" afterPath="$PROJECT_DIR$/scenarios/scenario11.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenarios/scenario12.csv" beforeDir="false" afterPath="$PROJECT_DIR$/scenarios/scenario12.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenarios/scenario13.csv" beforeDir="false" afterPath="$PROJECT_DIR$/scenarios/scenario13.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenarios/scenario14.csv" beforeDir="false" afterPath="$PROJECT_DIR$/scenarios/scenario14.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenarios/scenario15.csv" beforeDir="false" afterPath="$PROJECT_DIR$/scenarios/scenario15.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenarios/scenario2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/scenarios/scenario2.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenarios/scenario3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/scenarios/scenario3.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenarios/scenario4.csv" beforeDir="false" afterPath="$PROJECT_DIR$/scenarios/scenario4.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenarios/scenario5.csv" beforeDir="false" afterPath="$PROJECT_DIR$/scenarios/scenario5.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenarios/scenario6.csv" beforeDir="false" afterPath="$PROJECT_DIR$/scenarios/scenario6.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenarios/scenario7.csv" beforeDir="false" afterPath="$PROJECT_DIR$/scenarios/scenario7.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenarios/scenario8.csv" beforeDir="false" afterPath="$PROJECT_DIR$/scenarios/scenario8.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenarios/scenario9.csv" beforeDir="false" afterPath="$PROJECT_DIR$/scenarios/scenario9.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sim/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sim/Simulation.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -52,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="697">
-              <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
+              <caret line="41" column="1" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,12 +36,35 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scenarios/scenario2.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sim/Simulation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="296" column="18" selection-start-line="296" selection-start-column="18" selection-end-line="296" selection-end-column="18" />
+            <state relative-caret-position="478">
+              <caret line="459" column="37" selection-start-line="459" selection-start-column="37" selection-end-line="459" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mower/Mower.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2727">
+              <caret line="227" column="32" selection-start-line="227" selection-start-column="32" selection-end-line="227" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1954#1955#0" expanded="true" />
+                <element signature="e#1988#1989#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -119,8 +113,8 @@
         <option value="$PROJECT_DIR$/src/mower/NextMedRiskMoveServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/mower/NextMowerMoveService.java" />
         <option value="$PROJECT_DIR$/src/mower/Mower.java" />
-        <option value="$PROJECT_DIR$/src/sim/Simulation.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/sim/Simulation.java" />
       </list>
     </option>
   </component>
@@ -148,7 +142,24 @@
             <path>
               <item name="OsMowSis" type="b2602c69:ProjectViewProjectNode" />
               <item name="OsMowSis" type="462c0819:PsiDirectoryNode" />
+              <item name="scenarios" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OsMowSis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OsMowSis" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OsMowSis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OsMowSis" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="mower" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OsMowSis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OsMowSis" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sim" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -163,6 +174,9 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -195,6 +209,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="OsMowSis" />
+      <option name="PROGRAM_PARAMETERS" value="scenarios/scenario2.csv" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -264,18 +279,18 @@
       <workItem from="1568508775683" duration="20932000" />
       <workItem from="1568923042147" duration="227000" />
       <workItem from="1569688943974" duration="101000" />
-      <workItem from="1569689408608" duration="59353000" />
+      <workItem from="1569689408608" duration="61553000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94519000" />
+    <option name="totallyTimeSpent" value="96719000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25964215" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25964215" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -284,12 +299,12 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32969603" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32969603" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32969603" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.40997663" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.2416212" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.2416212" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Statistic" order="10" />
@@ -475,9 +490,6 @@
     <entry file="file://$PROJECT_DIR$/scenarios/scenario15.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/scenarios/scenario2.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mower/NextHighRiskMoveServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
@@ -530,42 +542,123 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scenario2.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="1" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scenarios/scenario2.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/mower/Mower.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
+        <state relative-caret-position="2727">
           <caret line="227" column="32" selection-start-line="227" selection-start-column="32" selection-end-line="227" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1647#1648#0" expanded="true" />
-            <element signature="e#1681#1682#0" expanded="true" />
             <element signature="e#1954#1955#0" expanded="true" />
             <element signature="e#1988#1989#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scenario2.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sim/Simulation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="296" column="18" selection-start-line="296" selection-start-column="18" selection-end-line="296" selection-end-column="18" />
+        <state relative-caret-position="478">
+          <caret line="459" column="37" selection-start-line="459" selection-start-column="37" selection-end-line="459" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>osmowsis:jar</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>OsMowSis</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
