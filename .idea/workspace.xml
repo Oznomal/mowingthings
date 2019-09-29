@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="219a6a87-85cd-4e5f-a1c8-8cff4f147e33" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/mower/NextHighRiskMoveServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mower/NextMedRiskMoveServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/constant/SimulationRiskProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OsMowSis/constant/SimulationRiskProfile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/mower/Mower.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OsMowSis/mower/Mower.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/mower/NextLowRiskMowerMoveServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OsMowSis/sim/Simulation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OsMowSis/sim/Simulation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constant/LawnSquareContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/constant/LawnSquareContent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constant/SimulationRiskProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/constant/SimulationRiskProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mower/Mower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mower/Mower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mower/NextLowRiskMowerMoveServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mower/NextLowRiskMoveServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mower/NextLowRiskMoveServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mower/NextLowRiskMoveServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mower/NextMowerMoveService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mower/NextMowerMoveService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sim/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sim/Simulation.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,7 +22,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mower/Mower.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
+            <state relative-caret-position="-4475">
               <caret line="77" column="5" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -63,10 +53,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mower/NextLowRiskMoveServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
-              <caret line="20" column="58" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
+            <state relative-caret-position="1317">
+              <caret line="133" column="76" selection-start-line="133" selection-start-column="76" selection-end-line="133" selection-end-column="76" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2466#2497#0" expanded="true" />
+                <element signature="e#6851#6882#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,8 +80,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mower/NextMowerMoveService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1802">
-              <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
+            <state relative-caret-position="240">
+              <caret line="174" column="14" selection-start-line="174" selection-start-column="14" selection-end-line="174" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -109,8 +101,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sim/Simulation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-66">
-              <caret line="78" selection-start-line="78" selection-end-line="78" />
+            <state relative-caret-position="240">
+              <caret line="290" selection-start-line="290" selection-end-line="290" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -178,15 +170,15 @@
         <option value="$PROJECT_DIR$/src/domain/Coordinate.java" />
         <option value="$PROJECT_DIR$/src/lawn/Coordinate.java" />
         <option value="$PROJECT_DIR$/src/constant/Direction.java" />
-        <option value="$PROJECT_DIR$/src/sim/Simulation.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/mower/NextLowRiskMowerMoveServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/constant/SimulationRiskProfile.java" />
         <option value="$PROJECT_DIR$/src/mower/NextHighRiskMoveServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/mower/NextMedRiskMoveServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/constant/LawnSquareContent.java" />
-        <option value="$PROJECT_DIR$/src/mower/NextMowerMoveService.java" />
         <option value="$PROJECT_DIR$/src/mower/Mower.java" />
+        <option value="$PROJECT_DIR$/src/sim/Simulation.java" />
+        <option value="$PROJECT_DIR$/src/mower/NextMowerMoveService.java" />
+        <option value="$PROJECT_DIR$/src/constant/LawnSquareContent.java" />
         <option value="$PROJECT_DIR$/src/mower/NextLowRiskMoveServiceImpl.java" />
       </list>
     </option>
@@ -348,12 +340,12 @@
       <workItem from="1568508775683" duration="20932000" />
       <workItem from="1568923042147" duration="227000" />
       <workItem from="1569688943974" duration="101000" />
-      <workItem from="1569689408608" duration="19766000" />
+      <workItem from="1569689408608" duration="31606000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54932000" />
+    <option name="totallyTimeSpent" value="66772000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
@@ -368,8 +360,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32969603" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32969603" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3998441" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32969603" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3998441" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -427,24 +419,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sim/Simulation.java</url>
-          <line>78</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sim/Simulation.java</url>
-          <line>290</line>
-          <properties />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/io/File.java">
@@ -544,37 +518,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sim/Simulation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-66">
-          <caret line="78" selection-start-line="78" selection-end-line="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/constant/LawnSquareContent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/constant/SimulationRiskProfile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mower/NextMowerMoveService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1802">
-          <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -602,7 +549,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mower/Mower.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1139">
+        <state relative-caret-position="-4475">
           <caret line="77" column="5" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -616,12 +563,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mower/NextLowRiskMoveServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/sim/Simulation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="20" column="58" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
+        <state relative-caret-position="240">
+          <caret line="290" selection-start-line="290" selection-end-line="290" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constant/LawnSquareContent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mower/NextMowerMoveService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="174" column="14" selection-start-line="174" selection-start-column="14" selection-end-line="174" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mower/NextLowRiskMoveServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1317">
+          <caret line="133" column="76" selection-start-line="133" selection-start-column="76" selection-end-line="133" selection-end-column="76" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2466#2497#0" expanded="true" />
+            <element signature="e#6851#6882#0" expanded="true" />
           </folding>
         </state>
       </provider>

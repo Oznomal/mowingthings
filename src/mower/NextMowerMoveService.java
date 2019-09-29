@@ -1,5 +1,6 @@
 package mower;
 
+import constant.Direction;
 import constant.LawnSquareContent;
 import constant.MowerMovementType;
 
@@ -8,7 +9,7 @@ import java.util.*;
 /**
  * I created this abstract class because I decided on the strategy to have risk profiles after I had made my initial
  * design. I could have left all of this logic for determining the next move based on the risk levels in the
- * mower class but it makes more sense to break it out into pattern. This allows me to add
+ * mower class but it makes more sense to break it out into this pattern. This allows me to add
  * more risk profiles and easily implement them while still keeping things nice and modular
  *
  * Created by L. Arroyo on 9/28/2019
@@ -42,7 +43,8 @@ abstract class NextMowerMoveService
      * 1 - High Risk Moves: Moves which represent another mower, not recommended but may work because mowers can move
      *                      and the surrounding square model can become outdated in the event that other mowers which
      *                      were picked up in a previous scan occur before this mower in the rotation of mowers in
-     *                      the sim and have moved prior to this mowers current turn
+     *                      the sim and have moved prior to this mowers current turn. These moves can also represent
+     *                      an unknown square, which are very high risk because it could be anything
      *
      * 2 - Med Risk Moves:  Moves which represent the squares which a high risk move could have moved to in a previous
      *                      move, ex: if a mower is positioned at index 1 in the model (NORTHEAST), then
@@ -112,12 +114,12 @@ abstract class NextMowerMoveService
     }
 
     /**
-     * Gets the number of null squares in the surrounding squares list
+     * Gets the number of unknown squares in the surrounding squares list
      *
      * Note:
      * If the list is null or empty it will return INT_MAX
      *
-     * @return - The number of null squares in the surrounding square list
+     * @return - The number of unknown squares in the surrounding square list
      */
     int getSurroundingSquareUnknownCount(final List<LawnSquareContent> surroundingSquares)
     {
@@ -160,6 +162,52 @@ abstract class NextMowerMoveService
                 mower.getYCoordinate(),
                 newXCoor,
                 newYCoor);
+    }
+
+    /**
+     * Gets a random directional move from a list of integers, where each integer represents a direction
+     *
+     * @param availableIndexList - The available directions to select from
+     * @param mower - The mower to get the move for
+     *
+     * @return - A STEER mower move in a random direction
+     */
+    MowerMove getRandomMowerSteerMove(final List<Integer> availableIndexList, final Mower mower)
+    {
+        Random random = new Random();
+
+        int idx = random.nextInt(availableIndexList.size());
+
+        Direction newDirection = Direction.getDirectionByIndex(availableIndexList.get(idx));
+
+        return new MowerMove(mower.getName(),
+                MowerMovementType.STEER, newDirection, mower.getXCoordinate(), mower.getYCoordinate());
+    }
+
+    /**
+     * Gets a sublist of indexes for a specific lawn square content type
+     *
+     * @param indexes - The list of indexes to check for the content type
+     * @param surroundingSquares - The complete list of surrounding squares
+     * @param contentToken - The content type to search for
+     *
+     * @return - A sublist of the indexes list that contains the content type
+     */
+    List<Integer> getSubListForContentType(final List<Integer> indexes,
+                                           final List<LawnSquareContent> surroundingSquares,
+                                           final LawnSquareContent contentToken)
+    {
+        List<Integer> response = new ArrayList<>();
+
+        for(Integer idx : indexes)
+        {
+            if(surroundingSquares.get(idx) == contentToken)
+            {
+                response.add(idx);
+            }
+        }
+
+        return response;
     }
 
     // PRIVATE METHODS
