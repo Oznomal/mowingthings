@@ -85,11 +85,9 @@ public class Mower
      * Note:
      * Decided to keep the instances for the NextMowerMoveService local to take advantage of the lazy singletons
      *
-     * @param isMoveEligible - Determines if the mower should consider the possibility of making a move
-     *
      * @return - The next mower move the mower will attempt to make
      */
-    public MowerMove determineMove(boolean isMoveEligible)
+    public MowerMove determineMove()
     {
         final SimulationRiskProfile riskProfile = simulation.getSimulationRiskProfile();
 
@@ -99,19 +97,19 @@ public class Mower
         {
             NextMowerMoveService lowRiskMoveService = NextLowRiskMoveServiceImpl.getInstance();
 
-            response = lowRiskMoveService.getNextMowerMove(isMoveEligible, this);
+            response = lowRiskMoveService.getNextMowerMove(this);
         }
         else if(riskProfile == SimulationRiskProfile.MEDIUM)
         {
             NextMowerMoveService medRiskMoveService = NextMedRiskMoveServiceImpl.getInstance();
 
-            response = medRiskMoveService.getNextMowerMove(isMoveEligible, this);
+            response = medRiskMoveService.getNextMowerMove(this);
         }
         else if(riskProfile == SimulationRiskProfile.HIGH)
         {
             NextMowerMoveService highRiskMoveService = NextHighRiskMoveServiceImpl.getInstance();
 
-            response = highRiskMoveService.getNextMowerMove(isMoveEligible, this);
+            response = highRiskMoveService.getNextMowerMove(this);
         }
         else{
             // THIS SHOULD NEVER BE REACHED BECAUSE RISK PROFILE SHOULD ALWAYS BE SET

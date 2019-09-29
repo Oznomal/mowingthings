@@ -16,7 +16,6 @@ public class Main
 
     public static void main(String [] args)
     {
-        // TODO: SCENARIOS TO TARGET: 6(HIGH), 8(MEDIUM), 9 (MEDIUM), 10 (MEDIUM), 11 (MEDIUM),
         int fileNumber = 15;
 
         final URL url = Main.class.getResource(SIMULATION_FILE_PREFIX + fileNumber + SIMULATION_FILE_SUFFIX);
@@ -35,34 +34,5 @@ public class Main
         final Simulation simulation = new Simulation(simFile);
 
         simulation.start();
-
-//        try
-//        {
-//            while(true)
-//            {
-//                iterations++;
-//
-//                final URL url = Main.class.getResource(SIMULATION_FILE_LOCATION);
-//
-//                File simFile;
-//
-//                try
-//                {
-//                    simFile = new File(url.toURI());
-//                }
-//                catch(URISyntaxException e)
-//                {
-//                    throw new RuntimeException(e);
-//                }
-//
-//                final Simulation simulation = new Simulation(simFile);
-//
-//                simulation.start();
-//            }
-//        }
-//        catch(Exception e)
-//        {
-//            System.out.println("Successfully had a run, it took " + iterations + " attempts");
-//        }
     }
 }

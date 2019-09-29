@@ -70,19 +70,11 @@ public class Simulation
         {
             System.out.println("Turn " + (++turnsTaken) + ":" + "\n");
 
-            boolean isMoveEligible = true;
-
             for(Mower mower : mowers)
             {
                 if(!mower.isDisabled())
                 {
-                    MowerMove move = mower.determineMove(isMoveEligible);
-
-//                    if(move.getMowerMovementType() == MowerMovementType.MOVE
-//                            && simulationRiskProfile == SimulationRiskProfile.LOW)
-//                    {
-//                        isMoveEligible = false;
-//                    }
+                    MowerMove move = mower.determineMove();
 
                     displayMowerMove(move);
 
@@ -93,6 +85,8 @@ public class Simulation
                 {
                     break;
                 }
+
+                determineSimulationRiskProfile();
             }
 
             displayHorizontalRule(true);
@@ -288,23 +282,19 @@ public class Simulation
      */
     private void determineSimulationRiskProfile()
     {
-         final int remainingMoves = (maxTurns - turnsTaken) * activeMowers;
+        final int remainingMoves = (maxTurns - turnsTaken) * activeMowers;
 
-         final int remainingGrass = startingGrassToCut - totalGrassCut;
+        final int remainingGrass = startingGrassToCut - totalGrassCut;
 
-         final int riskFactor = remainingMoves / remainingGrass;
+        final int riskFactor = remainingMoves / remainingGrass;
 
-         if(riskFactor >= 5)
-         {
-             updateSimulationRiskProfile(SimulationRiskProfile.LOW);
-         }
-         else if(riskFactor >= 3)
-         {
-             updateSimulationRiskProfile(SimulationRiskProfile.MEDIUM);
-         }
-         else{
-             updateSimulationRiskProfile(SimulationRiskProfile.HIGH);
-         }
+        if (riskFactor >= 5) {
+            updateSimulationRiskProfile(SimulationRiskProfile.LOW);
+        } else if (riskFactor >= 3) {
+            updateSimulationRiskProfile(SimulationRiskProfile.MEDIUM);
+        } else {
+            updateSimulationRiskProfile(SimulationRiskProfile.HIGH);
+        }
     }
 
     /**

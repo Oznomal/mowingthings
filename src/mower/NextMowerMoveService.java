@@ -21,12 +21,11 @@ abstract class NextMowerMoveService
     /**
      * Gets the next mower move
      *
-     * @param isMoveEligible - If the mower is eligible to make a MOVE move type
      * @param mower - The mower to determine the next move for
      *
      * @return - A mower move
      */
-    abstract MowerMove getNextMowerMove(final boolean isMoveEligible, final Mower mower);
+    abstract MowerMove getNextMowerMove(final Mower mower);
 
     // DEFAULT PACKAGE ONLY METHODS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -205,6 +204,38 @@ abstract class NextMowerMoveService
             {
                 response.add(idx);
             }
+        }
+
+        return response;
+    }
+
+    /**
+     * Determines a move or steer move based on a sublist of moves, if the mower already facing one of the
+     * moves then the move will be a move. However, if the mower is not facing one of the moves in the sublist
+     * the move will be steering towards a random direction in the sublist
+     *
+     * @param sublist - The sublist of moves
+     * @param mower - The mower
+     *
+     * @return - The move or steer move
+     */
+    MowerMove getMoveOrSteerMoveForSublist(final List<Integer> sublist, final Mower mower)
+    {
+        MowerMove response;
+
+        if(sublist.contains(mower.getDirection().getIndex()))
+        {
+            response = new MowerMove(mower.getName(),
+                    MowerMovementType.MOVE,
+                    mower.getDirection(),
+                    mower.getXCoordinate(),
+                    mower.getYCoordinate(),
+                    mower.getXCoordinate() + mower.getDirection().getxIncrement(),
+                    mower.getYCoordinate() + mower.getDirection().getyIncrement());
+        }
+        else
+        {
+            response = getRandomMowerSteerMove(sublist, mower);
         }
 
         return response;
