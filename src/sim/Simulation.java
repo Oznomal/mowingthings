@@ -27,6 +27,7 @@ public class Simulation
     // FIELDS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private final File simFile;
+    private final boolean displayPretty;
 
     private int maxTurns;
     private int turnsTaken;
@@ -44,12 +45,13 @@ public class Simulation
 
     // CONSTRUCTORS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public Simulation(final File simFile)
+    public Simulation(final File simFile, final boolean displayPretty)
     {
         this.simFile = simFile;
         this.turnsTaken = 0;
         this.totalGrassCut = 0;
         this.mowers = new ArrayList<>();
+        this.displayPretty = displayPretty;
     }
 
     // PUBLIC METHODS
@@ -130,7 +132,9 @@ public class Simulation
         {
             LawnSquare square = lawn.getLawnSquareByCoordinates(move.getNewXCoordinate(), move.getNewYCoordinate());
 
-            if(square.getLawnSquareContent() == LawnSquareContent.FENCE
+            if(square == null
+                    || square.getLawnSquareContent() == null
+                    || square.getLawnSquareContent() == LawnSquareContent.FENCE
                     || square.getLawnSquareContent() == LawnSquareContent.CRATER
                     || square.getLawnSquareContent() == LawnSquareContent.MOWER)
             {
@@ -208,11 +212,12 @@ public class Simulation
                 {
                     if(direction.name().equalsIgnoreCase(mowerInfo[2]))
                     {
-                        String mowerName = "MOWER " + (i+1);
+                        String mowerName = displayPretty ? "MOWER " + (i+1): "m" + (i);
                         int mowerX = Integer.parseInt(mowerInfo[0].trim());
                         int mowerY = Integer.parseInt(mowerInfo[1].trim());
+                        boolean isStrategic = Integer.parseInt(mowerInfo[3].trim()) == 1;
 
-                        mowers.add(new Mower(mowerName, direction, mowerX, mowerY, this));
+                        mowers.add(new Mower(mowerName, direction, mowerX, mowerY, this, isStrategic));
                     }
                 }
             }
@@ -332,7 +337,15 @@ public class Simulation
 
             oldSquare.setLawnSquareContent(LawnSquareContent.EMPTY);
 
-            if(newSquare.getLawnSquareContent() == LawnSquareContent.EMPTY)
+            if(newSquare == null || newSquare.getLawnSquareContent() == null)
+            {
+                // THE MOWER WILL HANDLE DE-ACTIVATING THE ACTUAL MOWER
+                System.out.println(move.getMowerName() + " was involved in a collision with a fence at ("
+                        + move.getNewXCoordinate() + "," + move.getNewYCoordinate() + ")");
+
+                activeMowers--;
+            }
+            else if(newSquare.getLawnSquareContent() == LawnSquareContent.EMPTY)
             {
                 newSquare.setLawnSquareContent(LawnSquareContent.MOWER);
             }
@@ -442,13 +455,12 @@ public class Simulation
         sb.append("\nGrass Cut: " + totalGrassCut);
         sb.append("\nTurns: " + turnsTaken);
 
-        System.out.println(sb.toString());
+        for(Mower mower : mowers)
+        {
+            sb.append("\n" + mower.getName() + " isStrategic: " + mower.isStrategic());
+        }
 
-        // USE THIS BLOCK WHEN LETTING THE SIMULATION RUN UNTIL SUCCESS
-//        if(totalGrassCut == startingGrassToCut)
-//        {
-//            throw new RuntimeException("Success");
-//        }
+        System.out.println(sb.toString());
     }
 
     /**

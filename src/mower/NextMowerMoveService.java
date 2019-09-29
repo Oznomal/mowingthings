@@ -30,6 +30,53 @@ abstract class NextMowerMoveService
     // DEFAULT PACKAGE ONLY METHODS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
+     * Gets a random mower move .... why? I have no idea ... kinda defeats the purpose of implementing an algorithm
+     * to actually solve the problem but I digress.
+     *
+     * @return - A random mower move
+     */
+    MowerMove getRandomMowerMove(final Mower mower)
+    {
+        MowerMove response;
+
+        final String name = mower.getName();
+        final Direction currDirection = mower.getDirection();
+        final int currXCoor = mower.getXCoordinate();
+        final int currYCoor = mower.getYCoordinate();
+
+        final Random random = new Random();
+
+        final int moveType = random.nextInt(100);
+
+        // PASS
+        if(moveType <= 10)
+        {
+            response = new MowerMove(name, MowerMovementType.PASS, currDirection, currXCoor, currYCoor);
+        }
+        // MOVE
+        else if(moveType <= 45)
+        {
+            response = getMowerMoveForMovingInCurrentDirection(mower);
+        }
+        // SCAN
+        else if(moveType <= 65)
+        {
+            response = new MowerMove(name, MowerMovementType.SCAN, currDirection, currXCoor, currYCoor);
+        }
+        // STEER
+        else if(moveType < 100)
+        {
+            response = getRandomMowerSteerMove(new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5 , 6, 7)), mower);
+        }
+        else{
+            // CODE SHOULD NEVER REACH HERE
+            throw new RuntimeException("[RANDOM INT ERROR] :: getRandomMowerMove - An invalid random was returned");
+        }
+
+        return response;
+    }
+
+    /**
      * Ranks the possible moves based off of moves which are forbidden, high risk, medium risk, and preferred
      *
      * Note: This does not take into account whether or not a square is Grass or Empty when placing them in the
@@ -152,8 +199,6 @@ abstract class NextMowerMoveService
         int newXCoor = mower.getXCoordinate() + mower.getDirection().getxIncrement();
         int newYCoor = mower.getYCoordinate() + mower.getDirection().getyIncrement();
 
-        mower.getSurroundingSquares().set(mower.getDirection().getIndex(), null);
-
         return new MowerMove(mower.getName(),
                 MowerMovementType.MOVE,
                 mower.getDirection(),
@@ -175,9 +220,20 @@ abstract class NextMowerMoveService
     {
         Random random = new Random();
 
-        int idx = random.nextInt(availableIndexList.size());
+        boolean foundNewDirection = false;
+        Direction newDirection = null;
 
-        Direction newDirection = Direction.getDirectionByIndex(availableIndexList.get(idx));
+        while(!foundNewDirection)
+        {
+            int idx = random.nextInt(availableIndexList.size());
+
+            newDirection = Direction.getDirectionByIndex(availableIndexList.get(idx));
+
+            if(newDirection != mower.getDirection())
+            {
+                foundNewDirection = true;
+            }
+        }
 
         return new MowerMove(mower.getName(),
                 MowerMovementType.STEER, newDirection, mower.getXCoordinate(), mower.getYCoordinate());

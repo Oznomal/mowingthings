@@ -13,10 +13,11 @@ public class Main
 {
     private static final String SIMULATION_FILE_PREFIX = "scenarios/scenario";
     private static final String SIMULATION_FILE_SUFFIX = ".csv";
+    private static final boolean DISPLAY_PRETTY = false;
 
     public static void main(String [] args)
     {
-        int fileNumber = 15;
+        int fileNumber = 0;
 
         final URL url = Main.class.getResource(SIMULATION_FILE_PREFIX + fileNumber + SIMULATION_FILE_SUFFIX);
 
@@ -31,7 +32,7 @@ public class Main
             throw new RuntimeException(e);
         }
 
-        final Simulation simulation = new Simulation(simFile);
+        final Simulation simulation = new Simulation(simFile, DISPLAY_PRETTY);
 
         simulation.start();
     }

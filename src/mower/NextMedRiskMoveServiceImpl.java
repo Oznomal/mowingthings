@@ -44,8 +44,12 @@ class NextMedRiskMoveServiceImpl extends NextMowerMoveService
     {
         MowerMove response;
 
+        if(!mower.isStrategic())
+        {
+            response = getRandomMowerMove(mower);
+        }
         // IF THE SURROUNDING SQUARES ARE EMPTY, HAVE TOO MANY UNKNOWNS, OR MAX TURNS SINCE LAST SCAN WE WANT TO SCAN
-        if(mower.getSurroundingSquares().isEmpty()
+        else if(mower.getSurroundingSquares().isEmpty()
                 || getSurroundingSquareUnknownCount(mower.getSurroundingSquares()) >= MAX_UNKNOWN_SQUARE_COUNT
                 || mower.getTurnsSinceLastScan() >= MAX_TURNS_SINCE_LAST_SCAN)
         {

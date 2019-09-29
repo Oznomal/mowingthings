@@ -20,6 +20,7 @@ public class Mower
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private final Simulation simulation;
     private final String name;
+    private final boolean isStrategic;
 
     private Direction direction;
     private int xCoordinate;
@@ -30,13 +31,14 @@ public class Mower
 
     // CONSTRUCTORS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public Mower(String name, Direction direction, int xCoordinate, int yCoordinate, Simulation simulation)
+    public Mower(String name, Direction direction, int xCoordinate, int yCoordinate, Simulation simulation, boolean isStrategic)
     {
         this.name = name;
         this.direction = direction;
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
         this.simulation = simulation;
+        this.isStrategic = isStrategic;
         this.isDisabled = false;
         this.surroundingSquares = new ArrayList<>(Collections.nCopies(8, LawnSquareContent.UNKNOWN));
         this.turnsSinceLastScan = 0;
@@ -64,8 +66,8 @@ public class Mower
         return isDisabled;
     }
 
-    public void setDisabled(boolean disabled) {
-        isDisabled = disabled;
+    public boolean isStrategic() {
+        return isStrategic;
     }
 
     public List<LawnSquareContent> getSurroundingSquares()
