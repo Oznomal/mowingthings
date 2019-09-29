@@ -225,7 +225,7 @@ public class Mower
         surroundingSquares.set(6, simulation.getLawnSquareContent(xCoordinate - 1, yCoordinate));
         surroundingSquares.set(7, simulation.getLawnSquareContent(xCoordinate - 1, yCoordinate + 1));
 
-        System.out.println(surroundingSquares);
+        simulation.displayScanResults(surroundingSquares);
 
         return surroundingSquares;
     }

@@ -70,7 +70,11 @@ public class Simulation
                 && totalGrassCut < startingGrassToCut
                 && activeMowers > 0)
         {
-            System.out.println("Turn " + (++turnsTaken) + ":" + "\n");
+            if(displayPretty)
+            {
+                System.out.println("Turn " + (turnsTaken + 1) + ":" + "\n");
+
+            }
 
             for(Mower mower : mowers)
             {
@@ -90,6 +94,8 @@ public class Simulation
 
                 determineSimulationRiskProfile();
             }
+
+            turnsTaken++;
 
             displayHorizontalRule(true);
         }
@@ -145,6 +151,27 @@ public class Simulation
         updateSimState(move);
 
         return response;
+    }
+
+    /**
+     * Displays the scan results for the mower
+     */
+    public void displayScanResults(List<LawnSquareContent> surroundingSquares)
+    {
+        StringBuilder sb = new StringBuilder();
+
+        for(int i =0; i < surroundingSquares.size(); i++)
+        {
+            if(i < surroundingSquares.size() -1)
+            {
+                sb.append(surroundingSquares.get(i).name().toLowerCase().trim() + ",");
+            }
+            else{
+                sb.append(surroundingSquares.get(i).name().toLowerCase().trim());
+            }
+        }
+
+        System.out.println(sb.toString());
     }
 
     // ACCESS METHODS
@@ -313,7 +340,10 @@ public class Simulation
         {
             simulationRiskProfile = newProfile;
 
-            System.out.println("\nSetting the Sim Risk Profile to " + newProfile + "\n");
+            if(displayPretty)
+            {
+                System.out.println("\nSetting the Sim Risk Profile to " + newProfile + "\n");
+            }
         }
     }
 
@@ -340,34 +370,56 @@ public class Simulation
             if(newSquare == null || newSquare.getLawnSquareContent() == null)
             {
                 // THE MOWER WILL HANDLE DE-ACTIVATING THE ACTUAL MOWER
-                System.out.println(move.getMowerName() + " was involved in a collision with a fence at ("
-                        + move.getNewXCoordinate() + "," + move.getNewYCoordinate() + ")");
+                if(displayPretty)
+                {
+                    System.out.println(move.getMowerName() + " was involved in a collision with a fence at ("
+                            + move.getNewXCoordinate() + "," + move.getNewYCoordinate() + ")");
+                }
+                else{
+                    System.out.println("crash");
+                }
 
                 activeMowers--;
             }
             else if(newSquare.getLawnSquareContent() == LawnSquareContent.EMPTY)
             {
                 newSquare.setLawnSquareContent(LawnSquareContent.MOWER);
+
+                System.out.println("ok");
             }
             else if(newSquare.getLawnSquareContent() == LawnSquareContent.GRASS)
             {
                 newSquare.setLawnSquareContent(LawnSquareContent.MOWER);
 
                 totalGrassCut++;
+
+                System.out.println("ok");
             }
             else if(newSquare.getLawnSquareContent() == LawnSquareContent.FENCE)
             {
                 // THE MOWER WILL HANDLE DE-ACTIVATING THE ACTUAL MOWER
-                System.out.println(move.getMowerName() + " was involved in a collision with a fence at ("
-                        + move.getNewXCoordinate() + "," + move.getNewYCoordinate() + ")");
+                if(displayPretty)
+                {
+                    System.out.println(move.getMowerName() + " was involved in a collision with a fence at ("
+                            + move.getNewXCoordinate() + "," + move.getNewYCoordinate() + ")");
+                }
+                else{
+                    System.out.println("crash");
+                }
 
                 activeMowers--;
             }
             else if(newSquare.getLawnSquareContent() == LawnSquareContent.CRATER)
             {
                 // THE MOWER WILL HANDLE DE-ACTIVATING THE ACTUAL MOWER
-                System.out.println(move.getMowerName() + " was involved in a collision with a crater at ("
-                        + move.getNewXCoordinate() + "," + move.getNewYCoordinate() + ")");
+                if(displayPretty)
+                {
+                    System.out.println(move.getMowerName() + " was involved in a collision with a crater at ("
+                            + move.getNewXCoordinate() + "," + move.getNewYCoordinate() + ")");
+                }
+                else{
+                    System.out.println("crash");
+                }
 
                 newSquare.setLawnSquareContent(LawnSquareContent.EMPTY);
 
@@ -381,13 +433,22 @@ public class Simulation
                             && mower.getYCoordinate() == move.getNewYCoordinate())
                             || mower.getName().equals(move.getMowerName()))
                     {
-                        System.out.println(mower.getName() + " was involved in a collision with another mower at ("
-                                + move.getNewXCoordinate() + "," + move.getNewYCoordinate() + ")");
+                        if(displayPretty)
+                        {
+                            System.out.println(mower.getName() + " was involved in a collision with another mower at ("
+                                    + move.getNewXCoordinate() + "," + move.getNewYCoordinate() + ")");
+                        }
 
                         mower.disableMower();
 
                         activeMowers--;
                     }
+                }
+
+                if(!displayPretty)
+                {
+                    System.out.println("crash");
+
                 }
 
                 newSquare.setLawnSquareContent(LawnSquareContent.EMPTY);
@@ -400,12 +461,15 @@ public class Simulation
      */
     private void displayStartingSimInfo()
     {
-        System.out.println("Starting the simulation\n");
-        System.out.println("Lawn area: " + lawnArea);
-        System.out.println("Total grass to cut: " + startingGrassToCut);
-        System.out.println("Identified obstacles: " + (lawnArea - startingGrassToCut));
-        System.out.println("Number of mowers: " + activeMowers);
-        System.out.println("Maximum turn limit: " + maxTurns);
+        if(displayPretty)
+        {
+            System.out.println("Starting the simulation\n");
+            System.out.println("Lawn area: " + lawnArea);
+            System.out.println("Total grass to cut: " + startingGrassToCut);
+            System.out.println("Identified obstacles: " + (lawnArea - startingGrassToCut));
+            System.out.println("Number of mowers: " + activeMowers);
+            System.out.println("Maximum turn limit: " + maxTurns);
+        }
     }
 
     /**
@@ -419,25 +483,49 @@ public class Simulation
 
         if(mowerMove.getMowerMovementType() == MowerMovementType.MOVE)
         {
-            sb.append(mowerMove.getMowerName() + " is moving " + mowerMove.getDirection() + " from ");
-            sb.append("(" + mowerMove.getCurrentXCoordinate() + "," + mowerMove.getCurrentYCoordinate() + ")");
-            sb.append(" to (" + mowerMove.getNewXCoordinate() + "," + mowerMove.getNewYCoordinate() + ")");
+            if(displayPretty)
+            {
+                sb.append(mowerMove.getMowerName() + " is moving " + mowerMove.getDirection() + " from ");
+                sb.append("(" + mowerMove.getCurrentXCoordinate() + "," + mowerMove.getCurrentYCoordinate() + ")");
+                sb.append(" to (" + mowerMove.getNewXCoordinate() + "," + mowerMove.getNewYCoordinate() + ")");
+            }
+            else{
+                sb.append(mowerMove.getMowerName() + ",move");
+            }
         }
         else if(mowerMove.getMowerMovementType() == MowerMovementType.SCAN)
         {
-            sb.append(mowerMove.getMowerName() + " is scanning while located at ");
-            sb.append("(" + mowerMove.getCurrentXCoordinate() + "," + mowerMove.getCurrentYCoordinate() + ")");
+            if(displayPretty)
+            {
+                sb.append(mowerMove.getMowerName() + " is scanning while located at ");
+                sb.append("(" + mowerMove.getCurrentXCoordinate() + "," + mowerMove.getCurrentYCoordinate() + ")");
+            }
+            else{
+                sb.append(mowerMove.getMowerName() + ",scan");
+            }
         }
         else if(mowerMove.getMowerMovementType() == MowerMovementType.STEER)
         {
-            sb.append(mowerMove.getMowerName() + " is changing directions at ");
-            sb.append("(" + mowerMove.getCurrentXCoordinate() + "," + mowerMove.getCurrentYCoordinate() + ")");
-            sb.append(" to face " + mowerMove.getDirection());
+            if(displayPretty)
+            {
+                sb.append(mowerMove.getMowerName() + " is changing directions at ");
+                sb.append("(" + mowerMove.getCurrentXCoordinate() + "," + mowerMove.getCurrentYCoordinate() + ")");
+                sb.append(" to face " + mowerMove.getDirection());
+            }
+            else{
+                sb.append(mowerMove.getMowerName() + ",steer," + mowerMove.getDirection().name().toLowerCase().trim());
+            }
         }
         else if(mowerMove.getMowerMovementType() == MowerMovementType.PASS)
         {
-            sb.append(mowerMove.getMowerName() + " is passing while at ");
-            sb.append("(" + mowerMove.getCurrentXCoordinate() + "," + mowerMove.getCurrentYCoordinate() + ")");
+            if(displayPretty)
+            {
+                sb.append(mowerMove.getMowerName() + " is passing while at ");
+                sb.append("(" + mowerMove.getCurrentXCoordinate() + "," + mowerMove.getCurrentYCoordinate() + ")");
+            }
+            else{
+                sb.append(mowerMove.getMowerName() + ",pass");
+            }
         }
 
         System.out.println(sb.toString());
@@ -448,16 +536,23 @@ public class Simulation
      */
     private void displayFinalResults()
     {
-        StringBuilder sb = new StringBuilder("The simulation has ended, the final results are:\n");
+        StringBuilder sb = new StringBuilder();
 
-        sb.append("\nTotal Lawn Area: " + lawnArea);
-        sb.append("\nGrass To Cut: " + startingGrassToCut);
-        sb.append("\nGrass Cut: " + totalGrassCut);
-        sb.append("\nTurns: " + turnsTaken);
-
-        for(Mower mower : mowers)
+        if(displayPretty)
         {
-            sb.append("\n" + mower.getName() + " isStrategic: " + mower.isStrategic());
+            sb.append("The simulation has ended, the final results are:\n");
+            sb.append("\nTotal Lawn Area: " + lawnArea);
+            sb.append("\nGrass To Cut: " + startingGrassToCut);
+            sb.append("\nGrass Cut: " + totalGrassCut);
+            sb.append("\nTurns: " + turnsTaken);
+
+            for(Mower mower : mowers)
+            {
+                sb.append("\n" + mower.getName() + " isStrategic: " + mower.isStrategic());
+            }
+        }
+        else{
+            sb.append(lawnArea + "," + startingGrassToCut + "," + totalGrassCut + "," + turnsTaken);
         }
 
         System.out.println(sb.toString());
@@ -472,6 +567,9 @@ public class Simulation
     {
         final String line = "_____________________________________________________________________________________\n";
 
-        System.out.println(startingGap? "\n" + line : line);
+        if(displayPretty)
+        {
+            System.out.println(startingGap? "\n" + line : line);
+        }
     }
 }
