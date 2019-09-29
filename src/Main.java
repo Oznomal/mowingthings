@@ -1,8 +1,6 @@
 import sim.Simulation;
 
 import java.io.File;
-import java.net.URISyntaxException;
-import java.net.URL;
 
 /**
  * Class to instantiate and run the sim
@@ -13,27 +11,32 @@ public class Main
 {
     private static final String SIMULATION_FILE_PREFIX = "scenarios/scenario";
     private static final String SIMULATION_FILE_SUFFIX = ".csv";
-    private static final boolean DISPLAY_PRETTY = false;
+    private static final boolean USE_TEST_FILES = false;
 
     public static void main(String [] args)
     {
-        int fileNumber = 0;
-
-        final URL url = Main.class.getResource(SIMULATION_FILE_PREFIX + fileNumber + SIMULATION_FILE_SUFFIX);
-
-        File simFile;
-
-        try
+        if(!USE_TEST_FILES && args.length < 1)
         {
-            simFile = new File(url.toURI());
-        }
-        catch(URISyntaxException e)
-        {
-            throw new RuntimeException(e);
+            throw new RuntimeException("[FATAL ERROR] :: main - Cannot load file from args");
         }
 
-        final Simulation simulation = new Simulation(simFile, DISPLAY_PRETTY);
+        if(USE_TEST_FILES)
+        {
+            for(int i = 0; i < 16; i++)
+            {
+                final File simFile = new File(SIMULATION_FILE_PREFIX + i + SIMULATION_FILE_SUFFIX);
 
-        simulation.start();
+                final Simulation simulation = new Simulation(simFile, true); // DISPLAY LESS CRYPTIC READOUT
+
+                simulation.start();
+            }
+        }
+        else{
+            File simFile = new File(args[0].trim());
+
+            final Simulation simulation = new Simulation(simFile, false); // DISPLAY THE CLASS FORMAT
+
+            simulation.start();
+        }
     }
 }

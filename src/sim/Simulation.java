@@ -556,6 +556,8 @@ public class Simulation
         }
 
         System.out.println(sb.toString());
+
+        displayHorizontalRule(false);
     }
 
     /**
